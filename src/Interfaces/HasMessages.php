@@ -1,8 +1,8 @@
 <?php
 
-namespace BrianFaust\Messageable\Contracts;
+namespace BrianFaust\Messageable\Interfaces;
 
-interface Messageable
+interface HasMessages
 {
     /**
      * @return mixed

@@ -1,6 +1,6 @@
 <?php
 
-namespace BrianFaust\Messageable\Models;
+namespace BrianFaust\Messageable;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;

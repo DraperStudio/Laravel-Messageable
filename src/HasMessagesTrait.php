@@ -2,11 +2,11 @@
 
 namespace BrianFaust\Messageable\Traits;
 
-use BrianFaust\Messageable\Models\Message;
-use BrianFaust\Messageable\Models\Participant;
-use BrianFaust\Messageable\Models\Thread;
+use BrianFaust\Messageable\Message;
+use BrianFaust\Messageable\Participant;
+use BrianFaust\Messageable\Thread;
 
-trait Messageable
+trait HasMessagesTrait
 {
     /**
      * @return mixed
