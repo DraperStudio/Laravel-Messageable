@@ -1,6 +1,6 @@
 <?php
 
-namespace BrianFaust\Messageable\Traits;
+namespace BrianFaust\Messageable;
 
 use BrianFaust\Messageable\Message;
 use BrianFaust\Messageable\Participant;
