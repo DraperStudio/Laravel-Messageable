@@ -1,10 +1,15 @@
 <?php
 
-namespace BrianFaust\Messageable;
+/*
+ * This file is part of Laravel Messageable.
+ *
+ * (c) Brian Faust <hello@brianfaust.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use BrianFaust\Messageable\Message;
-use BrianFaust\Messageable\Participant;
-use BrianFaust\Messageable\Thread;
+namespace BrianFaust\Messageable;
 
 trait HasMessagesTrait
 {
