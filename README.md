@@ -11,9 +11,7 @@ $ composer require faustbrian/laravel-messageable
 And then include the service provider within `app/config/app.php`.
 
 ``` php
-'providers' => [
-    BrianFaust\Messageable\MessageableServiceProvider::class
-];
+BrianFaust\Messageable\MessageableServiceProvider::class
 ```
 
 To get started, you'll need to publish the vendor assets and migrate:
