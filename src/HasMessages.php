@@ -22,7 +22,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
-trait HasMessagesTrait
+trait HasMessages
 {
     /**
      * @return mixed

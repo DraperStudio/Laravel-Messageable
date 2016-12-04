@@ -29,13 +29,12 @@ php artisan vendor:publish --provider="BrianFaust\Messagable\MessageableServiceP
 
 namespace App;
 
-use BrianFaust\Messageable\HasMessagesTrait;
-use BrianFaust\Messageable\Interfaces\HasMessages;
+use BrianFaust\Messageable\HasMessages;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model implements HasMessages
+class User extends Model
 {
-    use HasMessagesTrait;
+    use HasMessages;
 }
 ```
 
