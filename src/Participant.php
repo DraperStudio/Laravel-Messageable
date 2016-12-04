@@ -22,8 +22,15 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Participant extends Model
 {
@@ -47,7 +54,7 @@ class Participant extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function thread()
+    public function thread(): BelongsTo
     {
         return $this->belongsTo(Thread::class);
     }
@@ -55,7 +62,7 @@ class Participant extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function model()
+    public function model(): Morphto
     {
         return $this->morphTo('participant');
     }

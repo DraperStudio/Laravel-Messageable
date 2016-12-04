@@ -22,12 +22,19 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 trait HasMessages
 {
     /**
      * @return mixed
      */
-    public function messages()
+    public function messages(): MorphMany
     {
         return $this->morphMany(Message::class, 'creator');
     }
@@ -35,7 +42,7 @@ trait HasMessages
     /**
      * @return mixed
      */
-    public function threads()
+    public function threads(): BelongsToMany
     {
         return $this->belongsToMany(Thread::class, 'participants', 'participant_id');
     }
@@ -43,7 +50,7 @@ trait HasMessages
     /**
      * @return int
      */
-    public function newMessagesCount()
+    public function newMessagesCount(): int
     {
         return count($this->threadsWithNewMessages());
     }
@@ -51,7 +58,7 @@ trait HasMessages
     /**
      * @return array
      */
-    public function threadsWithNewMessages()
+    public function threadsWithNewMessages(): array
     {
         $threadsWithNewMessages = [];
         $participants = Participant::where('participant_id', $this->id)

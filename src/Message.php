@@ -22,8 +22,15 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Message extends Model
 {
@@ -52,7 +59,7 @@ class Message extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function thread()
+    public function thread(): BelongsTo
     {
         return $this->belongsTo(Thread::class);
     }
@@ -60,7 +67,7 @@ class Message extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function creator()
+    public function creator(): MorphTo
     {
         return $this->morphTo('creator');
     }
@@ -68,7 +75,7 @@ class Message extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function participants()
+    public function participants(): HasMany
     {
         return $this->hasMany(Participant::class, 'thread_id', 'thread_id');
     }
@@ -76,7 +83,7 @@ class Message extends Model
     /**
      * @return mixed
      */
-    public function recipients()
+    public function recipients(): Collection
     {
         return $this->participants()
                     ->where('participant_id', '!=', $this->participant_id)

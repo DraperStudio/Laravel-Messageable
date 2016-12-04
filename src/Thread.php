@@ -22,10 +22,17 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
+use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Thread extends Model
 {
@@ -49,7 +56,7 @@ class Thread extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function messages()
+    public function messages(): HasMany
     {
         return $this->hasMany(Message::class);
     }
@@ -57,7 +64,7 @@ class Thread extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function participants()
+    public function participants(): HasMany
     {
         return $this->hasMany(Participant::class);
     }
@@ -65,7 +72,7 @@ class Thread extends Model
     /**
      * @return mixed
      */
-    public function creator()
+    public function creator(): Model
     {
         return $this->messages()->oldest()->first()->creator;
     }
@@ -73,7 +80,7 @@ class Thread extends Model
     /**
      * @return mixed
      */
-    public function getLatestMessage()
+    public function getLatestMessage(): Message
     {
         return $this->messages()->latest()->first();
     }
@@ -81,7 +88,7 @@ class Thread extends Model
     /**
      * @return mixed
      */
-    public static function getAllLatest()
+    public static function getAllLatest(): Collection
     {
         return static::latest('updated_at');
     }
@@ -91,7 +98,7 @@ class Thread extends Model
      *
      * @return array
      */
-    public function participantsIdsAndTypes($participant = null)
+    public function participantsIdsAndTypes($participant = null): array
     {
         $participants = $this->participants()
                              ->withTrashed()
@@ -144,22 +151,20 @@ class Thread extends Model
      *
      * @return $this
      */
-    public function addMessage($data, Model $creator)
+    public function addMessage($data, Model $creator): bool
     {
         $message = (new Message())->fill(array_merge($data, [
             'creator_id'   => $creator->id,
             'creator_type' => get_class($creator),
         ]));
 
-        $this->messages()->save($message);
-
-        return $message;
+        return (bool) $this->messages()->save($message);
     }
 
     /**
      * @param array $messages
      */
-    public function addMessages(array $messages)
+    public function addMessages(array $messages): void
     {
         foreach ($messages as $message) {
             $this->addMessage($message['data'], $message['creator']);
@@ -171,7 +176,7 @@ class Thread extends Model
      *
      * @return $this|Model
      */
-    public function addParticipant(Model $participant)
+    public function addParticipant(Model $participant): bool
     {
         $participant = (new Participant())->fill([
             'participant_id'   => $participant->id,
@@ -179,15 +184,13 @@ class Thread extends Model
             'last_read'        => new Carbon(),
         ]);
 
-        $this->participants()->save($participant);
-
-        return $participant;
+        return (bool) $this->participants()->save($participant);
     }
 
     /**
      * @param array $participants
      */
-    public function addParticipants(array $participants)
+    public function addParticipants(array $participants): void
     {
         foreach ($participants as $participant) {
             $this->addParticipant($participant);
@@ -197,7 +200,7 @@ class Thread extends Model
     /**
      * @param $userId
      */
-    public function markAsRead($userId)
+    public function markAsRead($userId): void
     {
         try {
             $participant = $this->getParticipantFromModel($userId);
@@ -213,7 +216,7 @@ class Thread extends Model
      *
      * @return bool
      */
-    public function isUnread($participant)
+    public function isUnread($participant): bool
     {
         try {
             $participant = $this->getParticipantFromModel($participant);
@@ -233,7 +236,7 @@ class Thread extends Model
      *
      * @return mixed
      */
-    public function getParticipantFromModel($participant)
+    public function getParticipantFromModel($participant): Participant
     {
         return $this->participants()
                     ->where('participant_id', $participant->id)
@@ -241,7 +244,7 @@ class Thread extends Model
                     ->firstOrFail();
     }
 
-    public function activateAllParticipants()
+    public function activateAllParticipants(): void
     {
         $participants = $this->participants()->withTrashed()->get();
 
@@ -255,7 +258,7 @@ class Thread extends Model
      *
      * @return bool
      */
-    public function hasParticipant($participant)
+    public function hasParticipant($participant): bool
     {
         return $this->participants()
                     ->where('participant_id', '=', $participant->id)
