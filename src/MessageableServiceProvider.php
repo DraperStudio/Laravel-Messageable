@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace BrianFaust\Messageable;
 
-use BrianFaust\ServiceProvider\ServiceProvider;
+use BrianFaust\ServiceProvider\AbstractServiceProvider;
 
-class MessageableServiceProvider extends ServiceProvider
+class MessageableServiceProvider extends AbstractServiceProvider
 {
     /**
      * Bootstrap the application services.
