@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Messageable.
  *
@@ -12,8 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Messageable;
+namespace BrianFaust\Messageable\Traits;
 
+use BrianFaust\Messageable\Models\Message;
+use BrianFaust\Messageable\Models\Thread;
+use BrianFaust\Messageable\Models\Participant;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
