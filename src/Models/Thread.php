@@ -138,7 +138,7 @@ class Thread extends Model
     public function addMessage($data, Model $creator): bool
     {
         $message = (new Message())->fill(array_merge($data, [
-            'creator_id'   => $creator->id,
+            'creator_id' => $creator->id,
             'creator_type' => get_class($creator),
         ]));
 
@@ -163,9 +163,9 @@ class Thread extends Model
     public function addParticipant(Model $participant): bool
     {
         $participant = (new Participant())->fill([
-            'participant_id'   => $participant->id,
+            'participant_id' => $participant->id,
             'participant_type' => get_class($participant),
-            'last_read'        => new Carbon(),
+            'last_read' => new Carbon(),
         ]);
 
         return (bool) $this->participants()->save($participant);
