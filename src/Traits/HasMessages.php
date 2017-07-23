@@ -11,11 +11,11 @@
 
 namespace BrianFaust\Messageable\Traits;
 
+use BrianFaust\Messageable\Models\Thread;
 use BrianFaust\Messageable\Models\Message;
 use BrianFaust\Messageable\Models\Participant;
-use BrianFaust\Messageable\Models\Thread;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait HasMessages
 {
