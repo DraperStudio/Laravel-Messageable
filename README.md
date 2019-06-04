@@ -1,22 +1,22 @@
 # Laravel Messageable
 
-[![Build Status](https://img.shields.io/travis/faustbrian/Laravel-Messageable/master.svg?style=flat-square)](https://travis-ci.org/faustbrian/Laravel-Messageable)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/faustbrian/laravel-messageable.svg?style=flat-square)]()
-[![Latest Version](https://img.shields.io/github/release/faustbrian/Laravel-Messageable.svg?style=flat-square)](https://github.com/faustbrian/Laravel-Messageable/releases)
-[![License](https://img.shields.io/packagist/l/faustbrian/Laravel-Messageable.svg?style=flat-square)](https://packagist.org/packages/faustbrian/Laravel-Messageable)
+[![Build Status](https://img.shields.io/travis/artisanry/Messageable/master.svg?style=flat-square)](https://travis-ci.org/artisanry/Messageable)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/artisanry/messageable.svg?style=flat-square)]()
+[![Latest Version](https://img.shields.io/github/release/artisanry/Messageable.svg?style=flat-square)](https://github.com/artisanry/Messageable/releases)
+[![License](https://img.shields.io/packagist/l/artisanry/Messageable.svg?style=flat-square)](https://packagist.org/packages/artisanry/Messageable)
 
 ## Installation
 
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
 
 ``` bash
-$ composer require faustbrian/laravel-messageable
+$ composer require artisanry/messageable
 ```
 
 To get started, you'll need to publish the vendor assets and migrate:
 
 ```
-php artisan vendor:publish --provider="BrianFaust\Messagable\MessageableServiceProvider" && php artisan migrate
+php artisan vendor:publish --provider="Artisanry\Messagable\MessageableServiceProvider" && php artisan migrate
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ php artisan vendor:publish --provider="BrianFaust\Messagable\MessageableServiceP
 
 namespace App;
 
-use BrianFaust\Messageable\HasMessages;
+use Artisanry\Messageable\HasMessages;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
@@ -132,7 +132,7 @@ $ phpunit
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to hello@brianfaust.me. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an e-mail to hello@basecode.sh. All security vulnerabilities will be promptly addressed.
 
 ## Credits
 
@@ -141,4 +141,4 @@ If you discover a security vulnerability within this package, please send an e-m
 
 ## License
 
-[MIT](LICENSE) © [Brian Faust](https://brianfaust.me)
+[MIT](LICENSE) © [Brian Faust](https://basecode.sh)

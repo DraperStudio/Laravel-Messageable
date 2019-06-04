@@ -1,12 +1,12 @@
 {
-    "name": "faustbrian/laravel-messageable",
+    "name": "artisanry/messageable",
     "description": "Messageable Polymorphic Eloquent Models for Laravel 5",
-    "keywords": ["laravel", "framework", "Laravel-messageable", "Laravel Messageable", "Brian Faust", "faustbrian"],
+    "keywords": ["laravel", "framework", "Laravel-messageable", "Laravel Messageable"],
     "license": "MIT",
     "authors": [{
         "name": "Brian Faust",
-        "email": "hello@brianfaust.me",
-        "homepage": "https://brianfaust.me"
+        "email": "hello@basecode.sh",
+        "homepage": "https://basecode.sh"
     }],
     "require": {
         "php": "^7.1",
@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BrianFaust\\Messageable\\": "src/"
+            "Artisanry\\Messageable\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BrianFaust\\Tests\\Messageable\\": "tests"
+            "Artisanry\\Tests\\Messageable\\": "tests"
         }
     },
     "config": {
@@ -39,7 +39,7 @@
         },
         "laravel": {
             "providers": [
-                "BrianFaust\\Messageable\\MessageableServiceProvider"
+                "Artisanry\\Messageable\\MessageableServiceProvider"
             ]
         }
     },

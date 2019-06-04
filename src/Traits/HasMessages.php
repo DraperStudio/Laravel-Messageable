@@ -5,17 +5,17 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Messageable.
  *
- * (c) Brian Faust <hello@brianfaust.de>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Messageable\Traits;
+namespace Artisanry\Messageable\Traits;
 
-use BrianFaust\Messageable\Models\Message;
-use BrianFaust\Messageable\Models\Participant;
-use BrianFaust\Messageable\Models\Thread;
+use Artisanry\Messageable\Models\Message;
+use Artisanry\Messageable\Models\Participant;
+use Artisanry\Messageable\Models\Thread;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
