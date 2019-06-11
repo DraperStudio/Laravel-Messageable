@@ -19,7 +19,7 @@
         "php": "^7.2",
         "illuminate/support": "^5.8",
         "illuminate/database": "^5.8",
-        "nesbot/carbon": "^1.22"
+        "nesbot/carbon": "^2.19"
     },
     "require-dev": {
         "graham-campbell/testbench": "^5.0",
